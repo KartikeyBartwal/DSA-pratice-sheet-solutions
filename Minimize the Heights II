@@ -1,0 +1,42 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+// This is C++
+
+void printArray(int arr[], int sizeOfArray);
+void minHeightDiff(int arr[], int sizeOfArray, int k);
+int main(){
+
+    int arr[4] = {1, 5, 8, 10};
+    int k = 2;
+    minHeightDiff(arr,sizeof(arr)/sizeof(arr[0]),k);
+    return 0;
+}
+
+
+void printArray(int arr[], int sizeOfArray){
+    cout << "{ ";
+    for(int i=0; i< sizeOfArray; i++){
+        cout << arr[i] << " ";
+    };
+    cout << "}";
+};
+void minHeightDiff(int arr[], int sizeOfArray, int k){
+    sort(arr,arr+sizeOfArray);
+    int max_now = 0;
+    int min_now = 10000000;
+    for(int i =0; i<sizeOfArray; i++){
+        if(arr[i] > k){
+            arr[i] = arr[i] - k;
+        }else{
+            arr[i] = arr[i] + k;
+        };
+        if(arr[i] > max_now){
+            max_now = arr[i];
+        }else if(arr[i] < min_now){
+            min_now = arr[i];
+        }
+    };
+    cout << max_now - min_now;
+}
