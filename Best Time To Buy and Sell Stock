@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+
+void maxProfit(int arr[], int sizeOfArray);
+int main(){
+
+    int arr[6] = {7,1,5,3,6,4};
+    int n = 6;
+    maxProfit(arr,n);
+    return 0;
+};
+
+void maxProfit(int arr[], int sizeOfArray){
+    int minSoFar = arr[0];
+    int maxProfit = 0;
+    for(int i = 1; i < sizeOfArray; i++){
+        if( (arr[i] - minSoFar) > maxProfit  ){
+            maxProfit = (arr[i] - minSoFar);
+        };
+        if( arr[i] < minSoFar){
+            minSoFar = arr[i];
+        };
+    };
+
+    if(maxProfit < 0){
+        cout << 0;
+    }else{
+        cout << maxProfit << endl;
+    };
+}
